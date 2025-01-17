@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+</head>
+<body>
+    <header> Details of order: <span data-th-text="${id}"></span></header>
+    <form action="/details" method="POST">
+        <input type="hidden" name="id" data-th-value = "${id}">
+        <table>
+            <div>
+                <tr>
+                    <td>Product: </td>
+                    <td>
+                        <input type="text" name="product">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Unit price </td>
+                    <td>
+                        <input type="text" name="unit_price">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Discount </td>
+                    <td>
+                        <input type="text" name="discount">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Quantity</td>
+                    <td>
+                        <input type="text" name="quantity">
+                    </td>
+                </tr>
+            </div>
+        </table>
+        <br><br>
+
+        <button type="submit">Add</button>
+    </form>
+
+    <br><a href="/"> Back</a>
+    <br>
+    <hr>
+    <hr>
+    <hr><br><br>
+    <div>
+        <header>List of details</header>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Order ID</th>
+                    <th>Product</th>
+                    <th>Unit Price</th>
+                    <th>Discount</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="detail : ${detailList}">
+                    <td th:text="${detail.id}"></td>
+                    <td th:text="${detail.order_id}"></td>
+                    <td th:text="${detail.product}"></td>
+                    <td th:text="${detail.unit_price}"></td>
+                    <td th:text="${detail.discount}"></td>
+                    <td th:text="${detail.quantity}"></td>
+                </tr>
+            </tbody>
+    </div>
+</body>
+</html>
